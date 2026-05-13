@@ -40,7 +40,10 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        //
+        return view('Department.show', [
+            'title' => 'Detail Department', 
+            'department' =>$department,
+        ]);
     }
 
     /**

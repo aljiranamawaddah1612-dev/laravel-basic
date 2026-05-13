@@ -14,5 +14,5 @@ Route::get('/Student/{student}edit', [StudentController::class, 'edit'])->name('
 Route::put('/Student/{student}', [StudentController::class, 'update'])->name('Student.update');
 Route::delete('/Student/{student}', [StudentController::class, 'destroy'])->name('Student.destroy');
 
-route:: resource('Department', DepartmentController::class);
+route:: resource('department', DepartmentController::class);
 route:: resource('lecturer', LecturerController::class);

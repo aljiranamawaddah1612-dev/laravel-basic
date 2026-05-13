@@ -8,15 +8,17 @@
         </div>
     @endsession
 
-    <a class="btn btn-primary mb-3" href="{{ route('Department.create') }}" role="button">CREATE</a>
+    <a class="btn btn-primary mb-3" href="{{ route('department.create') }}" role="button">CREATE</a>
 
     <ul class="list-group">
         @foreach ($Departments as $Department)
             <li class="list-group-item">
                 {{ $loop->iteration }}. {{ $Department->name }}
-                <a class="btn btn-warning btn-sm " href="{{ route('Department.edit', $Department) }}"
+                <a class="btn btn-info btn-sm " href="{{ route('department.show', $Department) }}"
+                    role="button">Detail</a>
+                <a class="btn btn-warning btn-sm " href="{{ route('department.edit', $Department) }}"
                     role="button">edit</a>
-                <form action="{{ route('Department.destroy', $Department) }}" method="POST" class="d-inline">
+                <form action="{{ route('department.destroy', $Department) }}" method="POST" class="d-inline">
                     @method('DELETE')
                     @csrf
 

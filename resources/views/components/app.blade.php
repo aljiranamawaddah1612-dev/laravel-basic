@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link" href="{{ route('Student.index') }}">STUDENT</a>
-                    <a class="nav-link" href="{{ route('Department.index') }}">DEPARTMEN</a>
+                    <a class="nav-link" href="{{ route('department.index') }}">DEPARTMEN</a>
                     <a class="nav-link" href="{{ route('lecturer.index') }}">LECTURER</a>
                 </div>
             </div>
