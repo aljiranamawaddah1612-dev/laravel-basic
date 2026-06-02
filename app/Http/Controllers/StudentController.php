@@ -35,9 +35,12 @@ class StudentController extends Controller
         $validated = $request->validate([
         'name' => 'required|max:255',
         'nim' => 'required|digits:11|numeric',
+        'gender' => 'required|in:Male,Female',
     ], [
         'name.required' => 'Nama tidak boleh kosong',
         'name.max' => 'Nama tidak boleh lebih dari :max karakter',
+        'gender.required' => 'Gender tidak boleh kosong',
+        'gender.in' => 'Gender tidak valid',
 
         'nim.required' => 'Nim tidak boleh kosong',
         'nim.digits' => 'Nim wajib :digits digit',
@@ -75,12 +78,15 @@ class StudentController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'nim' => 'required|digits:11|numeric',
+            'gender' => 'required|in:Male,Female',
         ],[
            'name.required' => 'Nama tidak boleh kosong',
            'name.max' => 'Nama tidak boleh lebih dari :max karakter',
            'nim.required' => 'Nim tidak boleh kosong',
            'nim.digits' => 'Nim wajib :digits digit',
-           'nim.numeric' => 'Nim wajib angka', 
+           'nim.numeric' => 'Nim wajib angka',
+           'gender.required' => 'Gender tidak boleh kosong',
+           'gender.in' => 'Gender tidak valid',
         ]);
 
         $student->update($validated);
@@ -94,5 +100,26 @@ class StudentController extends Controller
     {
         $student->delete($student);
         return to_route('Student.index')->withSuccess('Data berhasil dihapus');
+    }
+
+    // soft deletes
+    public function trash()
+    {
+        return view('Student.trash', [
+            'title' => ' Trash Student',
+            'students' => Student::onlyTrashed()->latest()->get(),
+        ]);
+    }
+
+    public function restore(Student $student)
+    {
+        $student->restore();
+        return to_route('Student.trash')->withSuccess('Data berhasil dikembalikan');
+    }
+
+    public function forceDelete(Student $student)
+    {
+        $student->forceDelete();
+        return to_route('Student.trash')->withSuccess('Data berhasil dihapus secara permanen');
     }
 }

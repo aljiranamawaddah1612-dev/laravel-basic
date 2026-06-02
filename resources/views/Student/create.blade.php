@@ -20,6 +20,16 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+        <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-control @error('gender') is-invalid @enderror" id="gender" name="gender">
+                <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
+            </select>
+            @error('gender')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
 
         <a class="btn btn-warning" href="{{ route('Student.index') }}" role="button">Cancel</a>
         <button type="submit" class="btn btn-primary">Submit</button>
