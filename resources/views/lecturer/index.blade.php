@@ -19,14 +19,15 @@
                 <select class="form-select" id="department_id" name="department_id">
                     <option value="">All Department</option>
                     @foreach ($Departments as $department)
-                        <option value="{{ $department->id }}" {{ request('department_id') == $department->id ? 'selected' : '' }}>
+                        <option value="{{ $department->id }}"
+                            {{ request('department_id') == $department->id ? 'selected' : '' }}>
                             {{ $department->name }}
                         </option>
                     @endforeach
                 </select>
             </div>
             <div class="col-md-4">
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn btn-success">Search</button>
             </div>
         </div>
 
@@ -36,6 +37,8 @@
         @foreach ($Lecturers as $Lecturer)
             <li class="list-group-item">
                 {{ $loop->iteration }}. {{ $Lecturer->name }} -- {{ $Lecturer->Department->name }}
+                <a class="btn btn-info btn-sm " href="{{ route('lecturer.show', $Lecturer) }}"
+                    role="button">Detail</a>
                 <a class="btn btn-warning btn-sm " href="{{ route('lecturer.edit', $Lecturer) }}"
                     role="button">Edit</a>
                 <form action="{{ route('lecturer.destroy', $Lecturer) }}" method="POST" class="d-inline">

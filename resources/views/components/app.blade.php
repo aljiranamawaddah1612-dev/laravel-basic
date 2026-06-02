@@ -23,6 +23,7 @@
                     <a class="nav-link" href="{{ route('Student.index') }}">STUDENT</a>
                     <a class="nav-link" href="{{ route('department.index') }}">DEPARTMEN</a>
                     <a class="nav-link" href="{{ route('lecturer.index') }}">LECTURER</a>
+                    <a class="nav-link" href="{{ route('organization.index') }}">ORGANIZATION</a>
                 </div>
             </div>
         </div>
